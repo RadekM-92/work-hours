@@ -1,5 +1,7 @@
 import sys
 
+work_is_busy = False
+
 def user_cmd_not_ok(cmd):
     if cmd < 0 or cmd > 2:
         return True
@@ -21,7 +23,12 @@ while True:
             exit(0)
 
         if user_cmd == 1:
-            print("Praca rozpoczeta")
+            if work_is_busy == True:
+                print("Trwa praca!")
+            else:
+                work_is_busy = True
+                print("Praca rozpoczeta")
 
         if user_cmd == 2:
+            work_is_busy = False
             print('Praca zakonczona')
