@@ -2,6 +2,14 @@ import sys
 
 work_is_busy = False
 
+def show_main_menu():
+    print()
+    print("--- Rejestrator czasu pracy ---")
+    print("[0] - Wyjscie")
+    print("[1] - Rozpoczecie pracy")
+    print("[2] - Zakonczenie pracy")
+    print()
+
 def user_cmd_not_ok(cmd):
     if cmd < 0 or cmd > 2:
         return True
@@ -25,11 +33,7 @@ def user_cmd_work_stop():
 
 
 while True:
-    print()
-    print("--- Rejestrator czasu pracy ---")
-    print("[0] - Wyjscie")
-    print("[1] - Rozpoczecie pracy")
-    print("[2] - Zakonczenie pracy")
+    show_main_menu()
 
     user_cmd = int(input("Twoj wybor: "))
     if user_cmd_not_ok(user_cmd):
