@@ -17,6 +17,13 @@ def user_cmd_work_start():
         work_is_busy = True
         print("Praca rozpoczeta")
 
+def user_cmd_work_stop():
+    global work_is_busy
+
+    work_is_busy = False
+    print('Praca zakonczona')
+
+
 while True:
     print()
     print("--- Rejestrator czasu pracy ---")
@@ -35,5 +42,4 @@ while True:
             user_cmd_work_start()
 
         if user_cmd == 2:
-            work_is_busy = False
-            print('Praca zakonczona')
+            user_cmd_work_stop()
