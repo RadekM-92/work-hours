@@ -8,6 +8,15 @@ def user_cmd_not_ok(cmd):
     else:
         return False
 
+def user_cmd_work_start():
+    global work_is_busy
+
+    if work_is_busy == True:
+        print("Trwa praca!")
+    else:
+        work_is_busy = True
+        print("Praca rozpoczeta")
+
 while True:
     print()
     print("--- Rejestrator czasu pracy ---")
@@ -23,11 +32,7 @@ while True:
             exit(0)
 
         if user_cmd == 1:
-            if work_is_busy == True:
-                print("Trwa praca!")
-            else:
-                work_is_busy = True
-                print("Praca rozpoczeta")
+            user_cmd_work_start()
 
         if user_cmd == 2:
             work_is_busy = False
