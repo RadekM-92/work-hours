@@ -1,8 +1,13 @@
 import sys
+import datetime
 
 work_is_busy = False
 
 work_hours_list = []
+work_start_date = ''
+work_start_time = ''
+work_stop_date = ''
+work_stop_time = ''
 
 def show_main_menu():
     print()
@@ -20,15 +25,26 @@ def user_cmd_not_ok(cmd):
 
 def user_cmd_work_start():
     global work_is_busy
+    global work_start_date
+    global work_start_time
 
     if work_is_busy == True:
         print("Trwa praca!")
     else:
+        ct = datetime.datetime.now()
+        work_start_date = str(ct.date())
+        work_start_time = "".join(str(ct.hour) + ":" + str(ct.minute))
         work_is_busy = True
         print("Praca rozpoczeta")
 
 def user_cmd_work_stop():
     global work_is_busy
+    global work_stop_date
+    global work_stop_time
+
+    ct = datetime.datetime.now()
+    work_stop_date = str(ct.date())
+    work_stop_time = "".join(str(ct.hour) + ":" + str(ct.minute))
 
     work_is_busy = False
     print('Praca zakonczona')
