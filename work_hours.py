@@ -2,6 +2,8 @@ import sys
 
 work_is_busy = False
 
+work_hours_list = []
+
 def show_main_menu():
     print()
     print("--- Rejestrator czasu pracy ---")
@@ -31,6 +33,27 @@ def user_cmd_work_stop():
     work_is_busy = False
     print('Praca zakonczona')
 
+def create_new_file():
+    file = open("Work_Hours_Log.txt", "w+")
+    
+    file.write("Date:" + '\t' + "Start_Time:" + '\t' + "Stop_Time:" + '\n')
+    file.close()
+
+def load_file():
+    try:
+        file = open("Work_Hours_Log.txt")
+
+        for line in file.readlines():
+            if line == 0:
+                continue
+            else:
+                work_hours_list.append(line.strip())
+            
+        file.close()
+    except FileNotFoundError:
+        create_new_file()
+
+load_file()
 
 while True:
     show_main_menu()
@@ -47,3 +70,4 @@ while True:
 
         if user_cmd == 2:
             user_cmd_work_stop()
+
