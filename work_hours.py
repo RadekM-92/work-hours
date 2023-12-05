@@ -52,7 +52,7 @@ def user_cmd_work_stop():
 def create_new_file():
     file = open("Work_Hours_Log.txt", "w+")
     
-    file.write("Date:" + '\t' + "Start_Time:" + '\t' + "Stop_Time:" + '\n')
+    file.write("Start_Date:" + '\t' "Stop_date:" + '\t' + "Start_Time:" + '\t' + "Stop_Time:" + '\n')
     file.close()
 
 def load_file():
