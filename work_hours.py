@@ -39,6 +39,8 @@ def user_cmd_work_start():
 
 def user_cmd_work_stop():
     global work_is_busy
+    global work_start_date
+    global work_start_time
     global work_stop_date
     global work_stop_time
 
@@ -46,6 +48,14 @@ def user_cmd_work_stop():
     work_stop_date = str(ct.date())
     work_stop_time = "".join(str(ct.hour) + ":" + str(ct.minute))
 
+    work_log = (work_start_date, work_start_time, work_stop_date, work_stop_time)
+    work_hours_list.append(work_log)
+    
+    x = len(work_hours_list)
+    print(x)
+    for work_log in work_hours_list:
+        print(work_log[0] + '\t' + work_log[1] + '\t' + work_log[2] + '\t' + work_log[3])
+    
     work_is_busy = False
     print('Praca zakonczona')
 
@@ -62,12 +72,13 @@ def load_file():
         for line in file.readlines():
             if line == 0:
                 continue
-            else:
-                work_hours_list.append(line.strip())
+            # else:
+            #     work_hours_list.append(line.strip())
             
         file.close()
     except FileNotFoundError:
         create_new_file()
+
 
 load_file()
 
