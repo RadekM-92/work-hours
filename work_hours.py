@@ -16,6 +16,7 @@ def show_main_menu():
     print("[1] - Rozpoczecie pracy")
     print("[2] - Zakonczenie pracy")
     print()
+    print("Work is busy status: " + str(work_is_busy))
 
 def user_cmd_not_ok(cmd):
     if cmd < 0 or cmd > 2:
@@ -44,30 +45,27 @@ def user_cmd_work_stop():
     global work_stop_date
     global work_stop_time
 
-    ct = datetime.datetime.now()
-    work_stop_date = str(ct.date())
-    work_stop_time = "".join(str(ct.hour) + ":" + str(ct.minute))
-
-    work_log = (work_start_date, work_start_time, work_stop_date, work_stop_time)
-    work_hours_list.append(work_log)
-    
-    x = len(work_hours_list)
-    print(x)
-    for work_log in work_hours_list:
-        print(work_log[0] + '\t' + work_log[1] + '\t' + work_log[2] + '\t' + work_log[3])
-    
     if work_is_busy:
+        ct = datetime.datetime.now()
+        
+        work_stop_date = str(ct.date())
+        work_stop_time = "".join(str(ct.hour) + ":" + str(ct.minute))
+
+        work_log = (work_start_date, work_start_time, work_stop_date, work_stop_time)
+        work_hours_list.append(work_log)
+
+
         file = open("Work_Hours_Log.txt", "w")
 
         file.write("Start_Date:" + '\t' "Stop_date:" + '\t' + "Start_Time:" + '\t' + "Stop_Time:" + '\n')
-        
+
         for work_log in work_hours_list:
             file.write(work_log[0] + '\t' + work_log[1] + '\t' + work_log[2] + '\t' + work_log[3] + '\n')
             
+        file.close()
 
-
-    work_is_busy = False
-    print('Praca zakonczona')
+        work_is_busy = False
+        print('Praca zakonczona')
 
 def create_new_file():
     file = open("Work_Hours_Log.txt", "w+")
