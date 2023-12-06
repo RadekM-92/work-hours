@@ -75,7 +75,12 @@ def create_new_file():
 def load_file():
     try:
         file = open("Work_Hours_Log.txt")
-            
+
+        list = []
+        for line in file:
+            list.append(str(line.strip()).rsplit('\t'))
+        print(list)
+        
         file.close()
     except FileNotFoundError:
         create_new_file()
