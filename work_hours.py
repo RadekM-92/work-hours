@@ -16,7 +16,6 @@ def show_main_menu():
     print("[1] - Rozpoczecie pracy")
     print("[2] - Zakonczenie pracy")
     print()
-    print("Work is busy status: " + str(work_is_busy))
 
 def user_cmd_not_ok(cmd):
     if cmd < 0 or cmd > 2:
@@ -80,8 +79,8 @@ def load_file():
         for line in file.readlines():
             if line == 0:
                 continue
-            # else:
-            #     work_hours_list.append(line.strip())
+            else:
+                work_hours_list.append(line.strip())
             
         file.close()
     except FileNotFoundError:
