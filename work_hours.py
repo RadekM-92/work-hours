@@ -75,12 +75,6 @@ def create_new_file():
 def load_file():
     try:
         file = open("Work_Hours_Log.txt")
-
-        for line in file.readlines():
-            if line == 0:
-                continue
-            else:
-                work_hours_list.append(line.strip())
             
         file.close()
     except FileNotFoundError:
