@@ -56,6 +56,16 @@ def user_cmd_work_stop():
     for work_log in work_hours_list:
         print(work_log[0] + '\t' + work_log[1] + '\t' + work_log[2] + '\t' + work_log[3])
     
+    if work_is_busy:
+        file = open("Work_Hours_Log.txt", "w")
+
+        file.write("Start_Date:" + '\t' "Stop_date:" + '\t' + "Start_Time:" + '\t' + "Stop_Time:" + '\n')
+        
+        for work_log in work_hours_list:
+            file.write(work_log[0] + '\t' + work_log[1] + '\t' + work_log[2] + '\t' + work_log[3] + '\n')
+            
+
+
     work_is_busy = False
     print('Praca zakonczona')
 
