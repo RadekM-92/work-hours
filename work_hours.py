@@ -53,7 +53,7 @@ def user_cmd_work_stop():
         work_log = []
         work_log = [work_start_date, work_start_time, work_stop_date, work_stop_time]
         work_hours_list.append(work_log)
-        print(work_hours_list)
+
         file = open("Work_Hours_Log.txt", "w")
 
         file.write("Start_Date:" + '\t' "Stop_date:" + '\t' + "Start_Time:" + '\t' + "Stop_Time:" + '\n')
@@ -76,15 +76,12 @@ def load_file():
     try:
         file = open("Work_Hours_Log.txt")
 
-        list = []
         for line in file:
             if "Start_Date" in line:
                 continue
             else:
-                list.append(str(line.strip()).rsplit('\t'))
-    
-        work_hours_list = list
-
+                work_hours_list.append(str(line.strip()).rsplit('\t'))
+ 
         file.close()
     except FileNotFoundError:
         create_new_file()
