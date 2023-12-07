@@ -78,7 +78,10 @@ def load_file():
 
         list = []
         for line in file:
-            list.append(str(line.strip()).rsplit('\t'))
+            if "Start_Date" in line:
+                continue
+            else:
+                list.append(str(line.strip()).rsplit('\t'))
         print(list)
         
         file.close()
