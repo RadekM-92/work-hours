@@ -32,8 +32,19 @@ def user_cmd_work_start():
         print("Trwa praca!")
     else:
         ct = datetime.datetime.now()
+
+        if ct.hour < 10:
+            hour = str(ct.hour).zfill(2)
+        else:
+            hour = str(ct.hour)
+
+        if ct.minute < 10:
+            minute = str(ct.minute).zfill(2)
+        else:
+            minute = str(ct.minute)
+
         work_start_date = str(ct.date())
-        work_start_time = "".join(str(ct.hour) + ":" + str(ct.minute))
+        work_start_time = "".join(hour + ":" + minute)
         work_is_busy = True
         print("Praca rozpoczeta")
 
@@ -46,9 +57,19 @@ def user_cmd_work_stop():
 
     if work_is_busy:
         ct = datetime.datetime.now()
+
+        if ct.hour < 10:
+            hour = str(ct.hour).zfill(2)
+        else:
+            hour = str(ct.hour)
+
+        if ct.minute < 10:
+            minute = str(ct.minute).zfill(2)
+        else:
+            minute = str(ct.minute)
         
         work_stop_date = str(ct.date())
-        work_stop_time = "".join(str(ct.hour) + ":" + str(ct.minute))
+        work_stop_time = "".join(hour + ":" + minute)
 
         work_log = []
         work_log = [work_start_date, work_start_time, work_stop_date, work_stop_time]
